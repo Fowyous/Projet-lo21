@@ -27,7 +27,7 @@ typedef struct Propositions {
 
 typedef struct { 
         char* conclusion;
-        struct Propositions* premisse;
+        Propositions* premisse;
 }Regle;
 
 typedef struct BC{ 
@@ -71,9 +71,42 @@ typedef struct BC{
 //        fin tant que
 //        suivant(p) <- new_proposition
 //        ajout_proposition <- p                                /!\possiblement inutile
+//fin
 //
 //
+//fonction tete_premisse(premisse)
+//        p <- tete(premisse)
+//        si est_vide(p)
+//                tete_premisse <- NULL ou/et message d'erreur
+//        sinon
+//                tete_premisse <- proposition(p)
+//        fin si
+//fin
 //
+//
+//fonction concusion_regle(regle)
+//        c <- conclusion(regle)
+//        si c == NULL
+//                concusion_regle <- NULL ou/et message d'erreur
+//        sinon
+//                concusion_regle <- c
+//        fin si
+//fin
+//
+//
+//fonction est_dans_premisse(premisse, ptest)
+//        p <- tete(premisse)
+//        si est_vide(p)
+//                est_dans_premisse <- FAUX
+//        sinon si proposition(p) == ptest
+//                est_dans_premisse <- Vrai
+//        sinon si suivant(p) != NULL
+//                est_dans_premisse <- est_dans_premisse(rest(p))
+//        sinon
+//                est_dans_premisse <- FAUX
+//        fin si
+//fin
+//                
 
 
 
