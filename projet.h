@@ -10,7 +10,7 @@ typedef struct {
         Premisse premisse;
 }Regle;
 
-typedef struct { 
+typedef struct BC{ 
         Regle regle;
         struct BC* next;
 }BC;
