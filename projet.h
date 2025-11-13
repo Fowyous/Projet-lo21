@@ -16,6 +16,69 @@ typedef struct BC{
 }BC;
 
 
+
+//ou variante 
+
+
+typedef struct Propositions {
+        char* proposition;
+        struct Propositions* next;
+}Premisse;
+
+typedef struct { 
+        char* conclusion;
+        struct Propositions* premisse;
+}Regle;
+
+typedef struct BC{ 
+        Regle regle;
+        struct BC* next;
+}BC;
+
+//fonction en ALGO
+//
+//fonction cree_regle()
+//        new_regle <- Regle(NULL, Propositions())
+//        cree_regle <- new_regle
+//fin
+//
+//
+//fonction cree_conclusion(regle, conclu)
+//        si conclusion(regle) != NULL
+//                conclusion(regle) <- conclu
+//        fin si
+//fin
+//
+//
+//fonction est_vide(premisse)
+//        p <- tete(premisse)
+//        si proposition(p) != NULL
+//                est_vide <- FAUX
+//        fin si
+//        est_vide <- VRAI
+//fin
+//
+//
+//fonction ajout_proposition(premisse, propo)
+//        p <- tete(premisse)
+//        si est_vide(p)
+//                valeur(p) <- propo
+//                ajout_proposition <- p                        /!\possiblement inutile
+//        fin si
+//        new_proposition <- Proposition(propo)
+//        tant que non est_vide(suivant(p))
+//                p <- suivant(p)
+//        fin tant que
+//        suivant(p) <- new_proposition
+//        ajout_proposition <- p                                /!\possiblement inutile
+//
+//
+//
+
+
+
+
+
 Regle Creer_regle();        //cree une regle vide
 Regle Ajout_premisse(Regle regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
 Regle Conclusion(Regle regle, char* conclusion);        //cree la conclusion d une regle
