@@ -88,6 +88,20 @@ typedef struct BC{
 //fin
 //
 //
-//fonction supr_proposition()
-//                /!\ A FINIR
+//fonction supr_proposition(premisse, propo_s)
+//        si non est_dans_premisse(premisse, propo_s)
+//                supr_proposition <- FAUX ou message d'erreur
+//        sinon
+//                p <- tete(premisse)
+//                tant que suivant(p) != NULL
+//                        si proposition(p) == propo_s
+//                                
+
+
+
+
+
+
+
+
 
