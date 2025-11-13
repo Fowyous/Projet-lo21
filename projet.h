@@ -106,7 +106,10 @@ typedef struct BC{
 //                est_dans_premisse <- FAUX
 //        fin si
 //fin
-//                
+//
+//
+//fonction supr_proposition()
+//                /!\ A FINIR
 
 
 
@@ -116,7 +119,7 @@ Regle Creer_regle();        //cree une regle vide
 Regle Ajout_premisse(Regle regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
 Regle Conclusion(Regle regle, char* conclusion);        //cree la conclusion d une regle
 bool est_dans_premisse(Premisse premisse, char* proposition);        //Tester si une proposition appartient à la prémisse d’une règle, de manière récursive
-Premisse supr_propositio(Premisse premisse, char* proposition);        //il faut verif que la propo est dans la premisse
+Premisse supr_proposition(Premisse premisse, char* proposition);        //il faut verif que la propo est dans la premisse
 bool est_vide(Premisse premisse);
 char* tete_premisse(Premisse premisse);        //revoie la tete de la premisse 
 char* conclusion_regle(Regle regle);        //renvoie la conclusion d une regle
