@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 
 //¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//
 //_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//structure//¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\\
@@ -62,6 +64,24 @@ void Conclusion(Regle* regle, char* conclusion){
 
 
 
+////////////////////////////////////////////////verifie si la premisse est vide
+//fonction est_vide(premisse)
+//        p <- tete(premisse)
+//        si proposition(p) != NULL
+//                est_vide <- FAUX
+//        fin si
+//        est_vide <- VRAI
+//fin
+
+bool est_vide(Propositions* premisse){
+    Propositions* p = premisse;
+    if (p->proposition != NULL)
+        return false;
+    return true;
+}
+
+
+
 ////////////////////////////////////////////////ajout une proposition a la premisse d une regle en queue
 //fonction ajout_proposition(premisse, propo)
 //        new_proposition <- Proposition(propo)
@@ -82,7 +102,7 @@ void Ajout_proposition(Regle* regle, char* proposition){
     new_propo->proposition = proposition;
     new_propo->next = NULL;
 
-    if (est_vide(*(regle->premisse))) {
+    if (est_vide((regle->premisse))) {
         regle->premisse = new_propo;
     } else {
         Propositions* current = regle->premisse;
@@ -91,24 +111,6 @@ void Ajout_proposition(Regle* regle, char* proposition){
         }
         current->next = new_propo;
     }
-}
-
-
-
-////////////////////////////////////////////////verifie si la premisse est vide
-//fonction est_vide(premisse)
-//        p <- tete(premisse)
-//        si proposition(p) != NULL
-//                est_vide <- FAUX
-//        fin si
-//        est_vide <- VRAI
-//fin
-
-bool est_vide(Propositions* premisse){
-    Propositions* p = premisse;
-    if (p->proposition != NULL)
-        return false;
-    return true;
 }
 
 
