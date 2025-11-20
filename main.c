@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <termios.h>
-
+#include "main.h"
 char lire_char(){
 
 	struct termios oldt, newt;
 
+	printf("\033[H\033[J");// vider le terminal
 	// Obtenir les parametres du terminal
 	tcgetattr(0, &oldt);
 	newt = oldt;
@@ -23,10 +24,10 @@ void menu_principal(){
 	printf("a. mettre des propositions pour avoir des conclusions.\n");
 	printf("b. ajouter une règle.\n");
 	char c = lire_char();
-	if ( c == a){
+	if ( c == 'a'){
 		//a completer
 	}
-	if ( c == b){
+	if ( c =='b'){
 		//a completer
 	}
 
