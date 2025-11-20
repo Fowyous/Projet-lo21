@@ -27,12 +27,12 @@ typedef struct BC{
 //¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//
 
 Regle Creer_regle();        //cree une regle vide
-Regle Ajout_premisse(Regle regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
-Regle Conclusion(Regle regle, char* conclusion);        //cree la conclusion d une regle
-bool est_dans_premisse(Premisse premisse, char* proposition);        //Tester si une proposition appartient à la prémisse d’une règle, de manière récursive
-Premisse supr_proposition(Premisse premisse, char* proposition);        //il faut verif que la propo est dans la premisse
-bool est_vide(Premisse premisse);
-char* tete_premisse(Premisse premisse);        //revoie la tete de la premisse 
+void Ajout_proposition(Regle regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
+void Conclusion(Regle regle, char* conclusion);        //cree la conclusion d une regle
+bool est_dans_premisse(Propositions* premisse, char* ptest);        //Tester si une proposition appartient à la prémisse d’une règle, de manière récursive
+Propositions supr_proposition(Propositions* premisse, char* proposition);        //il faut verif que la propo est dans la premisse
+bool est_vide(Propositions* premisse);
+char* tete_premisse(Propositions* premisse);        //revoie la tete de la premisse 
 char* conclusion_regle(Regle regle);        //renvoie la conclusion d une regle
 
 
