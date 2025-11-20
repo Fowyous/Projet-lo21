@@ -13,7 +13,8 @@ Regle Creer_regle(){
     return new_regle;
 }
 void Conclusion(Regle* regle, char* conclusion){
-    if (regle->conclusion != NULL) {
+    //if (regle->conclusion != NULL) { //si il est null on la met aussi dedans
+    if (regle != NULL){
         regle->conclusion = conclusion;
     }
 }
@@ -26,7 +27,8 @@ bool est_vide(Propositions* premisse){
 }
 
 void Ajout_proposition(Regle* regle, char* proposition){
-    Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
+//pas besoin d'alloquer une memoire alors qu'on l'a déja alloqué avant
+//    Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
     new_propo->proposition = proposition;
     new_propo->next = NULL;
 
