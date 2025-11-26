@@ -18,7 +18,8 @@ typedef struct {
 }Regle;
 
 ///////////////////////////////////chaine de regles///il faut ajouter le nom de la base
-typedef struct BC{ 
+typedef struct BC{
+        char* nom;
         Regle regle;
         struct BC* next;
 }BC;
