@@ -17,7 +17,7 @@ typedef struct {
         Propositions* premisse;
 }Regle;
 
-///////////////////////////////////chaine de regles
+///////////////////////////////////chaine de regles///il faut ajouter le nom de la base
 typedef struct BC{ 
         Regle regle;
         struct BC* next;
