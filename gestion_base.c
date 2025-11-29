@@ -36,5 +36,4 @@ Regle tete_Base(BC* base){
     return base->regle;
 }
 
-Regle tete_Base(BC* base){
-    return base->regle;
+

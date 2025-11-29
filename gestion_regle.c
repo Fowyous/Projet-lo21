@@ -27,8 +27,7 @@ bool est_vide(Propositions* premisse){
 }
 
 void Ajout_proposition(Regle* regle, char* proposition){
-//pas besoin d'alloquer une memoire alors qu'on l'a déja alloqué avant
-//    Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
+    Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
     new_propo->proposition = proposition;
     new_propo->next = NULL;
 

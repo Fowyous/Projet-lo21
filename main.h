@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <termios.h>
@@ -29,17 +32,19 @@ typedef struct BC{
 //¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//
 
 Regle Creer_regle();        //cree une regle vide
-void Ajout_proposition(Regle regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
-void Conclusion(Regle regle, char* conclusion);        //cree la conclusion d une regle
+void Ajout_proposition(Regle* regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
+void Conclusion(Regle* regle, char* conclusion);        //cree la conclusion d une regle
 bool est_dans_premisse(Propositions* premisse, char* ptest);        //Tester si une proposition appartient à la prémisse d’une règle, de manière récursive
 Propositions supr_proposition(Propositions* premisse, char* proposition);        //il faut verif que la propo est dans la premisse
 bool est_vide(Propositions* premisse);
 char* tete_premisse(Propositions* premisse);        //revoie la tete de la premisse 
-char* conclusion_regle(Regle regle);        //renvoie la conclusion d une regle
+char* conclusion_regle(Regle *regle);        //renvoie la conclusion d une regle
 
 
 
 
 BC Creer_BC();        //cree une base vide
-BC Ajout_regle(BC base, Regle regle);        //ajout en queu la regle dans la BC
-Regle tete_Base(BC base);        //acceder a la regle se trouvant la tete de la base
+void Ajout_regle(BC *base, Regle regle);        //ajout en queu la regle dans la BC
+Regle tete_Base(BC *base);        //acceder a la regle se trouvant la tete de la base
+
+#endif
