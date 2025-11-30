@@ -35,17 +35,19 @@ void interface_ajout_regle(){// incomplet in faut la configurer pour ajouter la 
 	Conclusion(new_regle, conclusion);
 
 }
+
+void menu_BC(){
+
+}
 void menu_principal(){
-	//l'interface est a changer il faut demander 
         printf("\033[H\033[J");// vider le terminal
 	printf("choisir une option:\n");
-	printf("a. mettre des propositions pour avoir des conclusions.\n");
-	printf("b. ajouter une règle.\n");
-	printf("c. lister une règle.\n");
+	printf("a. lister les bases de connaissances.\n");
+	printf("b. créer une base de connaissance.\n");
 	char c = lire_char();
 	switch(c){
 	case('a'):
-		//a completer
+		menu_BC();
 		break;
 	case('b'):
 		interface_ajout_regle();

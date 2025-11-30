@@ -1,0 +1,1 @@
+BC1;conclusion:Prop1:prop2:prop3;conclusion:prop1:prop2:prop3,BC2;conclusion:prop1:prop2:prop3

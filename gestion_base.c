@@ -9,8 +9,8 @@
 ///////////////////////////////////////////////////////////////
 
 
-BC Creer_BC(){
-    BC new_BC;
+BC* Creer_BC(){
+    BC *new_BC = (BC*)malloc(sizeof(BC));
     new_BC.regle = Creer_regle();
     new_BC.next = NULL;
     return new_BC;
