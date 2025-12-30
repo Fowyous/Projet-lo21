@@ -17,7 +17,7 @@ typedef struct Propositions {
 }Propositions;
 
 ///////////////////////////////////structure regle
-typedef struct { 
+typedef struct Regle { 
         char* conclusion;
         Propositions* premisse;
 	struct Regle* next;
@@ -48,7 +48,7 @@ char* conclusion_regle(Regle *regle);        //renvoie la conclusion d une regle
 
 BC* Creer_BC(BC* bases);        //cree une base vide a la queue d'une liste de bases si bases est NULL ca retourne une seule base
 void Ajout_regle(BC *base, Regle* regle);        //ajout en queu la regle dans la BC
-Regle tete_Base(BC *base);        //acceder a la regle se trouvant la tete de la base
+Regle* tete_Base(BC *base);        //acceder a la regle se trouvant la tete de la base
 
 BC *lecture_fichier(char *chemin);
 void Ajout_nom_BC(BC* base, char* nom);

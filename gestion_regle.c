@@ -7,7 +7,7 @@
 //             FONCTIONS DE GESTION DES REGLES               //
 ///////////////////////////////////////////////////////////////
 Regle* Creer_regle(){
-    Regle* new_regle;
+    Regle* new_regle = (Regle*)malloc(sizeof(Regle));
     new_regle->conclusion = NULL;
     new_regle->premisse = NULL;
     new_regle->next = NULL;
@@ -21,8 +21,10 @@ void Conclusion(Regle* regle, char* conclusion){
 }
 
 bool est_vide(Propositions* premisse){
+
     Propositions* p = premisse;
-    if (p->proposition != NULL)
+
+    if (p != NULL && p->proposition != NULL)
         return false;
     return true;
 }
