@@ -6,10 +6,11 @@
 ///////////////////////////////////////////////////////////////
 //             FONCTIONS DE GESTION DES REGLES               //
 ///////////////////////////////////////////////////////////////
-Regle Creer_regle(){
-    Regle new_regle;
-    new_regle.conclusion = NULL;
-    new_regle.premisse = NULL;
+Regle* Creer_regle(){
+    Regle* new_regle;
+    new_regle->conclusion = NULL;
+    new_regle->premisse = NULL;
+    new_regle->next = NULL;
     return new_regle;
 }
 void Conclusion(Regle* regle, char* conclusion){

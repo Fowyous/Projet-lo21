@@ -1,18 +1,20 @@
 #include "main.h"
+#include <string.h>
+#include <stdlib.h>
 
 BC *lecture_fichier(char *chemin){//lis les bases de connaissances dans le fichier et retourne la tête.
 	FILE *file;
 	char ligne[BUFFER];
 
-        file = fopen(path, "r");
+        file = fopen(chemin, "r");
 
         if (file == NULL){
                 printf("Ouverture du fichier impossible!!\n");
                 exit(1);
         }
-	BC *bc_tete =  Creer_BC();
+	BC *bc_tete =  Creer_BC(NULL);
 	BC *bc_queue = bc_tete;
-	if (fgets(ligne, sizeof(ligne, file)) != NULL){
+	if (fgets(ligne, sizeof(ligne), file) != NULL){
 		// le fichier ne dois pas contenir de \n
 		ligne[strcspn(ligne, "\n")] = 0;
 
@@ -23,9 +25,9 @@ BC *lecture_fichier(char *chemin){//lis les bases de connaissances dans le fichi
 			char *mot = strtok(bc_data, ";");
 			// le premier mot c'est le nom de la base
 			if (mot) {
-				bc_queue->nom = mot; //j'ai pas trouvé de fonction pour ca. a ajouter
+				Ajout_nom_BC(bc_queue, mot);
 			}
-			regle_data = strtok(NULL, ";");
+			char* regle_data = strtok(NULL, ";");
 			while (regle_data){//c'est la boucle pour les régles(condition a regler)
 				Regle *nouvel_regle = Creer_regle();
 				mot = strtok(regle_data, ":");
@@ -41,11 +43,14 @@ BC *lecture_fichier(char *chemin){//lis les bases de connaissances dans le fichi
 				}
 				Ajout_regle(bc_queue, nouvel_regle);
 			}
-			//il faut creer une fonction pour gerer ca
-			bc_queue->next = Creer_BC();
-			bc_queue->next = bc_queue;
+			bc_queue = Creer_BC(bc_tete);
 		}
 	}
 	fclose(file);
 	return bc_tete;
+}
+
+int main(){
+	lecture_fichier("bases.txt");
+
 }
