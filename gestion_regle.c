@@ -29,6 +29,13 @@ bool est_vide(Propositions* premisse){
     return true;
 }
 
+Regle *Regle_suivant(Regle *regle){
+	if (regle != NULL){
+		return regle->next;
+	}
+	else
+		return NULL;
+}
 void Ajout_proposition(Regle* regle, char* proposition){
     Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
     new_propo->proposition = proposition;
@@ -54,8 +61,8 @@ char* conclusion_regle(Regle* regle){
     }
 }
 
-char* tete_premisse(Propositions* premisse){
-    Propositions* p = premisse;
+char* tete_premisse(Regle *regle){
+    Propositions* p = regle->premisse;
     if (est_vide(p)) {
         return NULL; // ou afficher un message d'erreur
     } else {
@@ -76,3 +83,9 @@ bool est_dans_premisse(Propositions* premisse, char* ptest){
     }
 }
 
+void supr_proposition(Regle *regle){
+	Propositions *propo = regle->premisse;
+	regle->premisse = regle->premisse->next;
+	free(propo);
+
+}

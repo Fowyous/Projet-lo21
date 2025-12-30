@@ -7,12 +7,22 @@ BC *Sauvegarde(BC *base, const char *chemin){
 	file = fopen(chemin, "w");
         if (file == NULL){
                 printf("Ouverture du fichier impossible!!\n");
-                exit(1);
+                exit(EXIT_FAILURE);
         }
 	while (base){
-
-
+		fprintf(file, "BC: %s\n", nom_bc(base));
+		while (regle){
+			Regle *regle = tete_Base(BC *base);
+			fprintf(file, "REGL: %s\n", conclusion_regle(regle));
+			while (prop){
+				fprintf(file, "    PROPOS: %s\n", tete_premisse(regle);
+				supr_proposition(regle);
+			}
+			supr_Regle(base);
+		}
+		base = supr_base(base);
 	}
+	fclose(file);
 
 }
 BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le fichier et retourne la tête.
@@ -23,7 +33,7 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 
         if (file == NULL){
                 printf("Ouverture du fichier impossible!!\n");
-                exit(1);
+                exit(EXIT_FAILURE);
         }
 	
 	BC *tete_base = NULL;
