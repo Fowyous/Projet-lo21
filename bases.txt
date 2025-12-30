@@ -1,1 +1,8 @@
-BC1;conclusion:Prop1:prop2:prop3;conclusion:prop1:prop2:prop3,BC2;conclusion:prop1:prop2:prop3
+BC: Mabasedeconnaissance
+REGL: Si il pleux alors la terre est mouillé
+    PROPOS: Il pleut
+    PROPOS: La terre est mouillé
+REGL: Si il fait beau, la terre est séche
+    PROPOS: Il fait beau
+    PROPOS: La terre est séche
+
