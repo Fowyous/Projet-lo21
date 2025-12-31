@@ -5,18 +5,9 @@
 #define INPUT_MAX 100
 char lire_char(){
 
-	struct termios oldt, newt;
-	// Obtenir les parametres du terminal
-	tcgetattr(0, &oldt);
-	newt = oldt;
 
-	//enlever le besoin de faire entrer et l'impression de la lettre sur l'ecran
-	newt.c_lflag &= ~(ICANON | ECHO);
-	tcsetattr(0, TCSANOW, &newt);
 	char c = getchar();
 
-	//remettre les parametre comme ils etaient
-	tcsetattr(0, TCSANOW, &oldt);
 	return c;
 }
 

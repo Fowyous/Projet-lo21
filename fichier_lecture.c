@@ -5,22 +5,27 @@
 BC *Sauvegarde(BC *base, const char *chemin){
 	FILE *file;
 	file = fopen(chemin, "w");
-        if (file == NULL){
-                printf("Ouverture du fichier impossible!!\n");
-                exit(EXIT_FAILURE);
-        }
+	if (file == NULL){
+		printf("Ouverture du fichier impossible!!\n");
+		exit(EXIT_FAILURE);
+	}
 	while (base){
 		fprintf(file, "BC: %s\n", nom_bc(base));
-		while (regle){
-			Regle *regle = tete_Base(BC *base);
-			fprintf(file, "REGL: %s\n", conclusion_regle(regle));
-			while (prop){
-				fprintf(file, "    PROPOS: %s\n", tete_premisse(regle);
+		Regle *regle;
+		do {
+			regle = tete_Base(base);
+			if (conclusion_regle(regle) != NULL){
+				fprintf(file, "REGL: %s\n", conclusion_regle(regle));
+			}
+			else 
+				break;
+			while (tete_premisse(regle) != NULL){
+				fprintf(file, "    PROPOS: %s\n", tete_premisse(regle));
 				supr_proposition(regle);
 			}
 			supr_Regle(base);
-		}
-		base = supr_base(base);
+		}while (regle);
+		base = supr_bc(base);
 	}
 	fclose(file);
 
@@ -38,18 +43,23 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 	
 	BC *tete_base = NULL;
 	BC *base = tete_base;
-	
 	Regle * nouvel_regle;
 	while (fgets(ligne, sizeof(ligne), file) != NULL){
 		if (strncmp(ligne, "BC:", 3) == 0) {//ligne contiendera seulement le nom de la base
+			if (tete_base == NULL){
+				base = Creer_BC(NULL);
+				tete_base = base;
+			}
+			else
 			base = Creer_BC(tete_base);
-			char * nom_bc = strdup(ligne + 4);// on enleve BC: du nom
-			nom_bc[strlen(nom_bc) - 1] = '\0';//on enleve le \n
-			Ajout_nom_BC(base, nom_bc);
 
+			char * nom_base = strdup(ligne + 4);// on enleve BC: du nom
+			nom_base[strlen(nom_base) - 1] = '\0';//on enleve le \n
+			Ajout_nom_BC(base, nom_base);
 		}
 		else if (strncmp(ligne, "REGL:", 5) == 0){
-			nouvel_regle = Creer_regle();
+		
+			nouvel_regle = Creer_regle(NULL);
 			char * conclusion = strdup(ligne + 6);// on enleve REGL:
 			conclusion[strlen(conclusion) - 1] = '\0';//on enleve le \n
 			Conclusion(nouvel_regle, conclusion);
@@ -65,11 +75,6 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 
 	fclose(file);
 	return tete_base;
-}
-
-int main(){
-	lecture_fichier("bases.txt");
-
 }
 
 

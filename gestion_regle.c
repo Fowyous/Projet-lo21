@@ -6,26 +6,42 @@
 ///////////////////////////////////////////////////////////////
 //             FONCTIONS DE GESTION DES REGLES               //
 ///////////////////////////////////////////////////////////////
-Regle* Creer_regle(){
-    Regle* new_regle = (Regle*)malloc(sizeof(Regle));
-    new_regle->conclusion = NULL;
-    new_regle->premisse = NULL;
-    new_regle->next = NULL;
+Regle* Creer_regle(Regle *regle){
+    Regle *new_regle;
+    if (regle == NULL){
+    	new_regle = (Regle*)malloc(sizeof(Regle));
+    	new_regle->conclusion = NULL;
+    	new_regle->premisse = NULL;
+    	new_regle->next = NULL;
+    }
+    else if (regle->next == NULL){
+	Regle* new_regle = (Regle*)malloc(sizeof(Regle));
+    	new_regle->conclusion = NULL;
+    	new_regle->premisse = NULL;
+	regle->next = new_regle;
+    }
+    else {
+    	new_regle = Creer_regle(regle->next);
+    }
     return new_regle;
 }
+
+
 void Conclusion(Regle* regle, char* conclusion){
-    //if (regle->conclusion != NULL) { //si il est null on la met aussi dedans
-    if (regle != NULL){
-        regle->conclusion = conclusion;
-    }
+	if (regle == NULL){
+		printf("regle nulle\n");
+		return;
+	}
+	regle->conclusion = conclusion;
+
 }
 
 bool est_vide(Propositions* premisse){
-
     Propositions* p = premisse;
 
-    if (p != NULL && p->proposition != NULL)
+    if (p != NULL && p->proposition != NULL){
         return false;
+    }
     return true;
 }
 
@@ -40,8 +56,11 @@ void Ajout_proposition(Regle* regle, char* proposition){
     Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
     new_propo->proposition = proposition;
     new_propo->next = NULL;
+    if (regle == NULL){
+    	printf("regle est nulle\n");
 
-    if (est_vide((regle->premisse))) {
+    }
+    if (est_vide(regle->premisse)) {
         regle->premisse = new_propo;
     } else {
         Propositions* current = regle->premisse;
@@ -53,6 +72,14 @@ void Ajout_proposition(Regle* regle, char* proposition){
 }
 
 char* conclusion_regle(Regle* regle){
+    if (regle == NULL){
+	printf("regle nulle\n");
+	return NULL;
+    }
+    if (regle->conclusion == NULL){
+	printf("conclusion nulle\n");
+	return NULL;
+    }
     char* c = regle->conclusion;
     if (c == NULL) {
         return NULL; // ou afficher un message d'erreur
@@ -62,11 +89,12 @@ char* conclusion_regle(Regle* regle){
 }
 
 char* tete_premisse(Regle *regle){
-    Propositions* p = regle->premisse;
-    if (est_vide(p)) {
+    
+//    Propositions* p = regle->premisse;
+    if (regle == NULL || est_vide(regle->premisse)) {
         return NULL; // ou afficher un message d'erreur
     } else {
-        return p->proposition;
+        return regle->premisse->proposition;
     }
 }
 

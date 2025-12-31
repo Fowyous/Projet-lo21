@@ -12,16 +12,13 @@
 BC* Creer_BC(BC* bases){//Crée une base et l'ajoute en queue et retourne la nouvelle base.
 	BC *new_BC;
     if (bases == NULL){
-
         new_BC = (BC*)malloc(sizeof(BC));
-        new_BC->regle = Creer_regle();
+	new_BC->regle = NULL;
 	new_BC->next = NULL;
-	bases = new_BC;
-	return new_BC;
     }
     else if (bases->next == NULL){
         new_BC = (BC*)malloc(sizeof(BC));
-        new_BC->regle = Creer_regle();
+        new_BC->regle = NULL;
         new_BC->next = NULL;
 	bases->next = new_BC;
     }
@@ -31,7 +28,8 @@ BC* Creer_BC(BC* bases){//Crée une base et l'ajoute en queue et retourne la nou
     return new_BC;
 }
 
-Bc *bc_suivant(BC *base){
+
+BC *bc_suivant(BC *base){
 	if (base != NULL){
 		return base->next;
 	}
@@ -48,24 +46,15 @@ char *nom_bc(BC *base){
 }
 void Ajout_regle(BC* base, Regle* regle){
 	Regle* derniere_regle = base->regle;
+	if (derniere_regle == NULL){
+		base->regle = regle;
+		return ;
+	}
 	while (derniere_regle->next != NULL){
 		derniere_regle = derniere_regle->next;
 	}
 	base->regle->next = regle;
 	return;
-//	BC* new_bc = (BC*)malloc(sizeof(BC));
-//    new_bc->regle = regle;
-//   new_bc->next = NULL;
-
-//    if (base->next == NULL) {
-//        base->next = new_bc;
-//    } else {
-//        BC* current = base;
-//        while (current->next != NULL) {
-//            current = current->next;
-//        }
-//        current->next = new_bc;
-//    }
 }
 
 void Ajout_nom_BC(BC* base, char* nom){
