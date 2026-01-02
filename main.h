@@ -58,6 +58,6 @@ BC *bc_suivant(BC *base);
 char *nom_bc(BC *base);
 
 BC *lecture_fichier(const char *chemin);
-BC *Sauvegarde(BC *base, const char *chemin);
+BC *Sauvegarde(BC *base, const char *chemin);// ca efface aussi la base.
 
 #endif

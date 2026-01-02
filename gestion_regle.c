@@ -111,9 +111,10 @@ bool est_dans_premisse(Propositions* premisse, char* ptest){
     }
 }
 
-void supr_proposition(Regle *regle){
-	Propositions *propo = regle->premisse;
-	regle->premisse = regle->premisse->next;
-	free(propo);
+void supr_proposition(Regle *regle){	
+	Propositions *propo = regle->premisse->next;
+	free(tete_premisse(regle));
+	free(regle->premisse);
+	regle->premisse = propo;
 
 }

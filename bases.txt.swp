@@ -5,4 +5,10 @@ REGL: Si il pleux alors la terre est mouillé
 REGL: Si il fait beau, la terre est séche
     PROPOS: Il fait beau
     PROPOS: La terre est séche
-
+BC: TempératureEtEau
+REGL: Si la température est inférieure à 0°C alors l'eau est gelée
+    PROPOS: La température est inférieure à 0°C
+    PROPOS: L'eau est gelée
+REGL: Si la température est supérieure à 100°C alors l'eau est vaporisée
+    PROPOS: La température est supérieure à 100°C
+    PROPOS: L'eau est vaporisée

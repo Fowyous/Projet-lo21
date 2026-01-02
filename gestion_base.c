@@ -71,8 +71,12 @@ void supr_Regle(BC *base){
 	if (base == NULL || base->regle == NULL){
 		return;
 	}
-	Regle *regle = base->regle;
-	base->regle = base->regle->next;
+	while (tete_premisse(tete_Base(base))){// si la regle n'a plus de premisse on continue
+		supr_proposition(tete_Base(base));
+	}
+	Regle *regle = tete_Base(base);
+	base->regle = regle->next;
+	free(conclusion_regle(regle));
 	free(regle);
 }
 
@@ -84,6 +88,7 @@ BC *supr_bc(BC *base){
 		supr_Regle(base);
 	}
 	BC *base2 = base->next;
+	free(nom_bc(base));
 	free(base);
 	return base2;
 }
