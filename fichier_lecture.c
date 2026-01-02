@@ -77,4 +77,3 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 	return tete_base;
 }
 
-

@@ -61,6 +61,9 @@ void Ajout_nom_BC(BC* base, char* nom){
 	base->nom = nom;
 }
 Regle* tete_Base(BC* base){
+    if (base == NULL || base->regle == NULL){
+	return NULL;
+    }
     return base->regle;
 }
 
@@ -76,6 +79,9 @@ void supr_Regle(BC *base){
 BC *supr_bc(BC *base){
 	if (base == NULL){
 		return NULL;
+	}
+	while (tete_Base(base)){
+		supr_Regle(base);
 	}
 	BC *base2 = base->next;
 	free(base);
