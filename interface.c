@@ -23,6 +23,29 @@ BC* lister_base(BC* base){     //retourne le tete de la base choisie
 }
 
 
+
+void liste_regles_base(BC *base){
+    if (base != NULL){
+        Regle* regle = base->regles;
+        int i = 1;
+        printf("Regles de la base %s :\n", base->nom);
+        while (regle != NULL){
+            printf("%d : %s =>", i, regle->conclusion);
+            while (regle->premisses != NULL){
+                printf(" %s", regle->premisses->proposition);
+                regle->premisses = regle->premisses->next;
+            }
+            printf("\n");
+            regle = regle_suivant(regle);
+            i++;
+        }
+    }
+    else {
+        printf("Aucune base choisie.\n");
+    }
+}
+
+
 void get_base _numero(int numero){
     BC* base = bases;
     int i = 1;
