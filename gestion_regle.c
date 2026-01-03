@@ -8,12 +8,12 @@
 ///////////////////////////////////////////////////////////////
 Regle* Creer_regle(Regle *regle){
     Regle *new_regle;
-    if (regle == NULL){
+//    if (regle == NULL){
     	new_regle = (Regle*)malloc(sizeof(Regle));
     	new_regle->conclusion = NULL;
     	new_regle->premisse = NULL;
     	new_regle->next = NULL;
-    }
+//    }/*
     else if (regle->next == NULL){
 	Regle* new_regle = (Regle*)malloc(sizeof(Regle));
     	new_regle->conclusion = NULL;
@@ -22,7 +22,7 @@ Regle* Creer_regle(Regle *regle){
     }
     else {
     	new_regle = Creer_regle(regle->next);
-    }
+    }*/
     return new_regle;
 }
 
