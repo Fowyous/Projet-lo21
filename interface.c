@@ -1,7 +1,34 @@
 #include "main.h"
 
-void lister_base(BC* base){
-  if (base == NULL){
-    printf("choisir parmi les bases avec une lettre.\n");
-  }
+BC* lister_base(BC* base){     //retourne le tete de la base choisie
+    int choix_base = -1;
+    if (base == NULL){
+        printf("choisir parmi les bases avec un numero.\n");
+        int i=1;
+        while (base != NULL){
+            printf("%d : %s\n", i, base->nom);
+            base = bc_suivant(base);
+            i++;
+        }
+        scanf("%d", &choix_base);
+        if (choix_base > 0){
+            base = get_base_numero(choix_base);
+            printf("Base choisie : %s\n", base->nom);
+            return base;
+        }
+    }
+    else {
+        printf("Base choisie : %s\n", base->nom);
+    }
+}
+
+
+void get_base _numero(int numero){
+    BC* base = bases;
+    int i = 1;
+    while (base != NULL && i < numero){
+        base = bc_suivant(base);
+        i++;
+    }
+    return base;
 }
