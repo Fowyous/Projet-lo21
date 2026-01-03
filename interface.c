@@ -64,28 +64,31 @@ void get_base _numero(int numero){
 int main() {
     char choix;
     while (conttinuer == 1){
-        printf("Voulez vous choisir une base ou en creer une nouvelle? (s: selectioner une base, n: nouvelle base)\n");
-        scanf(" %c", &choix);
-        if (choix == 's'){
-            BC* base = lister_base(NULL);
-            liste_regles_base(base);
+        while (selection == 1){
+            printf("Voulez vous choisir une base ou en creer une nouvelle? (s: selectioner une base, n: nouvelle base)\n");
+            scanf(" %c", &choix);
+            if (choix == 's'){
+                BC* base = lister_base(NULL);
+                liste_regles_base(base);
+                selection = 0;
+            }
+    
+            else if (choix == 'n'){
+                printf("Creation de nouvelle base non implementee.\n");
+                b = create_base();
+                printf("Entrez le nom de la nouvelle base : ");
+                char nom_base[100];
+                scanf("%s", nom_base);
+                b->nom = nom_base;
+                printf("Base cree : %s\n", b->nom); 
+                ///ajouter la base a la liste des bases
+                selection = 0;
+            }
+    
+            else {
+                printf("Choix invalide.\n");
+            }
         }
-
-        else if (choix == 'n'){
-            printf("Creation de nouvelle base non implementee.\n");
-            b = create_base();
-            printf("Entrez le nom de la nouvelle base : ");
-            char nom_base[100];
-            scanf("%s", nom_base);
-            b->nom = nom_base;
-            printf("Base cree : %s\n", b->nom); 
-            ///ajouter la base a la liste des bases
-        }
-
-        else {
-            printf("Choix invalide.\n");
-        }
-
 
         return 0;
     }
