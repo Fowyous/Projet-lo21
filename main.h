@@ -34,7 +34,7 @@ typedef struct BC{
 //_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//fonctions//¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\\
 //¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//
 
-Regle *Creer_regle(Regle *regle);        //cree une regle vide
+Regle *Creer_regle();        //cree une regle vide
 Regle *Regle_suivant(Regle *regle); // je ne suis pas sûr de l'utilité de cette fonction et je ne l'ai pas testé
 void Ajout_proposition(Regle* regle, char* proposition);        //ajout une proposition a la premisse d une regle en queu
 void Conclusion(Regle* regle, char* conclusion);        //cree la conclusion d une regle

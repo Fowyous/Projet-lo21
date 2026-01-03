@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////////
 //             FONCTIONS DE GESTION DES REGLES               //
 ///////////////////////////////////////////////////////////////
-Regle* Creer_regle(Regle *regle){
+Regle* Creer_regle(){
     Regle *new_regle;
 //    if (regle == NULL){
     	new_regle = (Regle*)malloc(sizeof(Regle));
@@ -14,7 +14,7 @@ Regle* Creer_regle(Regle *regle){
     	new_regle->premisse = NULL;
     	new_regle->next = NULL;
 //    }/*
-    else if (regle->next == NULL){
+/*    else if (regle->next == NULL){
 	Regle* new_regle = (Regle*)malloc(sizeof(Regle));
     	new_regle->conclusion = NULL;
     	new_regle->premisse = NULL;
