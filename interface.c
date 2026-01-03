@@ -31,9 +31,9 @@ void liste_regles_base(BC *base){
         printf("Regles de la base %s :\n", base->nom);
         while (regle != NULL){
             printf("%d : %s =>", i, regle->conclusion);
-            while (regle->premisses != NULL){
+            while (regle->premisses->proposition != NULL){
                 printf(" %s", regle->premisses->proposition);
-                regle->premisses = regle->premisses->next;
+                regle->premisses->proposition = regle->premisses->proposition->next;
             }
             printf("\n");
             regle = regle_suivant(regle);
@@ -44,6 +44,7 @@ void liste_regles_base(BC *base){
         printf("Aucune base choisie.\n");
     }
 }
+
 
 
 void get_base _numero(int numero){
