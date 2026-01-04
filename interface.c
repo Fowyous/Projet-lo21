@@ -1,7 +1,25 @@
 #include "main.h"
 
 
-BC* lister_base(BC* base){     //retourne le tete de la base choisie
+
+bool est_dans_premisse(Propositions* premisse, char* ptest){
+    Propositions* p = premisse;
+    if (est_vide(p)) {
+        return false;
+    } else if (strcmp(p->proposition, ptest) == 0) {
+        return true;
+    } else if (p->next != NULL) {
+        return est_dans_premisse(p->next, ptest);
+    } else {
+        return false;
+    }
+}
+
+
+
+
+
+BC* lister_base(BC* base){          //retourne un pointeur vers la base choisie
     int choix_base = -1;
     if (base == NULL){
         printf("choisir parmi les bases avec un numero.\n");
@@ -24,7 +42,7 @@ BC* lister_base(BC* base){     //retourne le tete de la base choisie
 }
 
 
-BC* get_base_numero(int numero){
+BC* get_base_numero(int numero){          //renvoie la base correspondant au numero que l'on donne
     BC* base = bases;
     int i = 1;
     while (base != NULL && i < numero){
@@ -34,7 +52,8 @@ BC* get_base_numero(int numero){
     return base;
 }
 
-Regle get_regle_numero(BC* base, int numero){    ///renvoie la regle correspondant au numero dans la base
+
+Regle get_regle_numero(BC* base, int numero){          ///renvoie la regle correspondant au numero dans la base
     Regle* regle = base->regles;
     int i = 1;
     while (regle != NULL && i < numero){
@@ -180,6 +199,8 @@ int main() {
                 printf("c: supprimer une regle\n");     ///a verif avec nouvelle fonction 
                 printf("d: afficher les regles\n");     ///a verif
                 printf("e: supprimer la base\n");       ///a verif
+                printf("f: sauvegarder les bases\n");   ///a verif
+                printf("g: moteur inference\n");        ///a verif
                 choix = getchar();
                 switch (choix){
                     ///ajout d'une regle
@@ -306,6 +327,19 @@ int main() {
                         action = 0;
                         selection = 1;
                         break;
+
+                    ///sauvegarde des bases
+                    case 'f':
+                        *Sauvegarde(*bases, /*chemin a modif */);
+                        printf("Bases sauvegardees.\n");
+                        break;
+
+                    ///moteur d inference
+                    case 'g':
+                        moteur_inference(b);
+                        break;
+                    }
+
 
                     default:
                         printf("Choix invalide.\n");
