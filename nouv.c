@@ -4,6 +4,19 @@
 #include <stdbool.h>
 
 
+typedef struct Propositions {
+        char* proposition;
+        struct Propositions* next;
+}Propositions;
+
+
+typedef struct Regle { 
+        char* conclusion;
+        Propositions* premisse;
+	struct Regle* next;
+}Regle;
+
+
 typedef struct BC{
         char* nom;
         Regle* regle;
@@ -11,9 +24,10 @@ typedef struct BC{
         struct BC* next;
 }BC;
 
+
 typedef struct liste_faits {
     char* fait;
-    int nombre_apparition = 1;
+    int nombre_apparition;
     struct liste_faits* next;
 } Liste_faits;
 
@@ -31,10 +45,23 @@ bool est_dans_liste_faits(Liste_faits* liste, char* fait_test){
 
 
 void Ajout_fait(Liste_faits** liste, char* nouveau_fait){
-    Liste_faits* new_fait = (Liste_faits*)malloc(sizeof(Liste_faits));
-    new_fait->fait = nouveau_fait;
-    new_fait->next = *liste;
-    *liste = new_fait;
+    if (est_dans_liste_faits(*liste, nouveau_fait)){
+        Liste_faits* p = *liste;
+        while (p != NULL){
+            if (strcmp(p->fait, nouveau_fait) == 0){
+                p->nombre_apparition += 1;
+                return;
+            }
+            p = p->next;
+        }
+    }
+    else {
+        Liste_faits* nouveau = (Liste_faits*)malloc(sizeof(Liste_faits));
+        nouveau->fait = strdup(nouveau_fait);
+        nouveau->nombre_apparition = 1;
+        nouveau->next = *liste;
+        *liste = nouveau;
+    }
 }
 
 
@@ -54,18 +81,27 @@ void supprimer_fait(Liste_faits** liste, char* fait_a_supprimer){
 
     while (current != NULL){
         if (strcmp(current->fait, fait_a_supprimer) == 0){
-            if (previous == NULL){
-                *liste = current->next;
-            } else {
-                previous->next = current->next;
+            if (current->nombre_apparition > 1){
+                current->nombre_apparition -= 1;
+                return;
             }
-            free(current);
-            return;
+            else {
+                if (previous == NULL){
+                    *liste = current->next;
+                }
+                else {
+                    previous->next = current->next;
+                }
+                free(current->fait);
+                free(current);
+                return;
+            }
         }
         previous = current;
         current = current->next;
     }
 }
+
 
 bool est_vide(Liste_faits* liste){
     return liste == NULL;
@@ -81,6 +117,29 @@ int taille_faits(Liste_faits* liste){
     }
     return taille;
 }
+
+
+
+
+
+
+
+
+
+
+
+void afficher_regle(Regle *regle){     ///a verif nouveau
+    if (regle != NULL){
+        printf("Regle : %s =>", regle->conclusion);
+        Propositions* p = regle->premisse;
+        while (p != NULL){
+            printf(" %s", p->proposition);
+            p = p->next;
+        }
+        printf("\n");
+    }
+}
+
 
 
 
@@ -111,10 +170,10 @@ void moteur_inference(BC* base){
     bool nouvelle_inference = true;
     while (nouvelle_inference){
         nouvelle_inference = false;
-        Regle* r = base->regles;
+        Regle* r = base->regle;
         while (r != NULL){
             bool toutes_premisses_connues = true;
-            Proposition* p = r->premisses;
+            Propositions* p = r->premisse;
             while (p != NULL){
                 if (!est_dans_liste_faits(faits_certain, p->proposition)){
                     toutes_premisses_connues = false;
@@ -124,7 +183,7 @@ void moteur_inference(BC* base){
             }
             if (toutes_premisses_connues && !est_dans_liste_faits(faits_certain, r->conclusion)){
                 printf("La regle suivante peut etre appliquee : ");
-                //afficher la regle
+                afficher_regle(r);
                 printf("Conclusion : %s\n", r->conclusion);
                 Ajout_fait(&faits_connus, r->conclusion);
                 printf("Le fait '%s' a ete ajoute aux faits connus.\n", r->conclusion);
@@ -145,5 +204,7 @@ void moteur_inference(BC* base){
             temp = temp->next;
         }
     }
-
+    printf("Inference terminee. Faits connus :\n");
+    afficher_liste_faits(faits_certain);
+}
     
