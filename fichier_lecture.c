@@ -45,7 +45,7 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 	while (fgets(ligne, sizeof(ligne), file) != NULL){
 		if (strncmp(ligne, "BC:", 3) == 0) {//ligne contiendera seulement le nom de la base
 			if (tete_base == NULL){
-				base = Creer_BC();
+				base = Creer_BC(NULL);
 				tete_base = base;
 			}
 			else
