@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
+#include "gestion_regle.h"
 
 ///////////////////////////////////////////////////////////////
 //      FONCTIONS DE GESTION DE LA BASE DE CONNAISSANCE      //
