@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <termios.h>
 #include "main.h"
+#include "gestion_base.h"
+#include "gestion_liste.h"
+#include "gestion_regle.h"
 
 #define INPUT_MAX 100
 
