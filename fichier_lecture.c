@@ -57,7 +57,7 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 		}
 		else if (strncmp(ligne, "REGL:", 5) == 0){
 		
-			nouvel_regle = Creer_regle(NULL);
+			nouvel_regle = Creer_regle();
 			char * conclusion = strdup(ligne + 6);// on enleve REGL:
 			conclusion[strlen(conclusion) - 1] = '\0';//on enleve le \n
 			Conclusion(nouvel_regle, conclusion);
