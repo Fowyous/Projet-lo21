@@ -77,7 +77,7 @@ bool est_vide(Liste_faits* liste){
     if (liste == NULL){
         return true;
     }
-    return false
+    return false;
 }
 
 
