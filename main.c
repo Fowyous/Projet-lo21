@@ -202,7 +202,7 @@ void principal() {
                                         printf("quelle premisse voulez-vous supprimer?\n");
                                         char del_premisse[100];
                                         scanf("%s", del_premisse);
-                                        Supprimer_proposition(r, del_premisse);    /// a verif nouvelle fonction
+                                        supprimer_proposition(r, del_premisse);    /// a verif nouvelle fonction
                                         printf("Premisse supprimee.\n");
                                     }
                                     else {
