@@ -104,3 +104,20 @@ int taille_base(BC *base) {
     printf("La base %s contient %d regles.\n", nom_bc(base), taille);   ////////////peut etre a tege
     return taille;
 }
+
+
+void liste_regles_base(BC *base) {
+    if (base != NULL) {
+        Regle* regle = tete_Base(base);
+        int i = 1;
+        printf("Regles de la base %s :\n", nom_bc(base));
+        while (regle != NULL) {
+            afficher_regle(regle);
+            regle = Regle_suivant(regle);
+            i++;
+        }
+    }
+    else {
+        printf("Aucune base choisie.\n");
+    }
+}
