@@ -73,7 +73,7 @@ void supprimer_fait(Liste_faits** liste, char* fait_a_supprimer){
 }
 
 
-bool est_vide(Liste_faits* liste){
+bool est_videliste(Liste_faits* liste){
     if (liste == NULL){
         return true;
     }
