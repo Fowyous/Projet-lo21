@@ -17,5 +17,5 @@ char* tete_premisse(Regle *regle);          //Prend en parametre un ponteur vers
 bool est_dans_premisse(Propositions* premisse, char* ptest);          //Prend en parametre un ponteur vers une premisse et une chaine de caractere "ptest" regarde si "ptest est dans premisse, et retourne un boolein VRAI si oui et FAUX si non.
 void supr_proposition(Regle *regle);          //Prend en parametre un ponteur vers une regle et supprime la propositionen tete de la premisse, et retourne rien.
 void afficher_regle(Regle *regle);          //Prend en parametre un ponteur vers une regle et affiche conclusion et premisse de la regle, et retourne rien.
-
+Propositions* proposition_suivante(Propositions* propo);          //Prend en parametre un pointeur vers la tete d'un liste de proposition, et retourne le suivant de cette liste.
 #endif
