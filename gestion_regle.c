@@ -121,7 +121,28 @@ void supr_proposition(Regle *regle) {
 }
 
 
-void afficher_regle(Regle *regle) {     ///a verif nouveau
+void suprimer_proposition(Regle *regle, char *propo){
+    if (regle != NULL){
+        Propositions* p = tete_premisse(regle);
+        Propositions* prev = NULL;
+        while (p != NULL && strcmp(p->proposition, propo) != 0){
+            prev = p;
+            p = p->next;
+        }
+        if (p != NULL){
+            if (prev == NULL){
+                regle->premisse = p->next;
+            }
+            else {
+                prev->next = p->next;
+            }
+            free(p);
+        }
+    }
+}
+
+
+void afficher_regle(Regle *regle) {
     if (regle != NULL) {
         printf("Regle : %s =>", regle->conclusion);
         Propositions* p = regle->premisse;
@@ -134,7 +155,7 @@ void afficher_regle(Regle *regle) {     ///a verif nouveau
 }
 
 
-void afficher_regle(Regle *regle) {     ///a verif nouveau
+void afficher_regle(Regle *regle) {
     if (regle != NULL) {
         printf("Regle : %s =>", conclusion_regle(regle));
         Propositions* p = tete_premisse(regle);
