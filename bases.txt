@@ -1,14 +1,33 @@
-BC: Mabasedeconnaissance
-REGL: Si il pleux alors la terre est mouillé
-    PROPOS: Il pleut
-    PROPOS: La terre est mouillé
-REGL: Si il fait beau, la terre est séche
-    PROPOS: Il fait beau
-    PROPOS: La terre est séche
-BC: TempératureEtEau
-REGL: Si la température est inférieure à 0°C alors l'eau est gelée
-    PROPOS: La température est inférieure à 0°C
-    PROPOS: L'eau est gelée
-REGL: Si la température est supérieure à 100°C alors l'eau est vaporisée
-    PROPOS: La température est supérieure à 100°C
-    PROPOS: L'eau est vaporisée
+BC: Nombres
+REGL: 4
+    PROPOS: 1
+    PROPOS: 3
+REGL: 7
+    PROPOS: 2
+    PROPOS: 5
+    PROPOS: 3
+REGL: 6
+    PROPOS: 1
+    PROPOS: 2
+REGL: 9
+    PROPOS: 4
+    PROPOS: 5
+    PROPOS: 3
+REGL: 8
+    PROPOS: 6
+    PROPOS: 2
+BC: Alphabet
+REGL: C
+    PROPOS: A
+REGL: F
+    PROPOS: C
+    PROPOS: D
+REGL: H
+    PROPOS: F
+    PROPOS: G
+    PROPOS: B
+REGL: J
+    PROPOS: H
+REGL: L
+    PROPOS: J
+    PROPOS: K
