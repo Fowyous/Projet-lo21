@@ -157,3 +157,14 @@ Regle* get_regle_numero(BC* base, int numero) {
     }
     return regle;
 }
+
+
+BC* get_base_numero(BC* bases, int numero) {
+    BC* base = bases;
+    int i = 1;
+    while (base != NULL && i < numero) {
+        base = bc_suivant(base);
+        i++;
+    }
+    return base;
+}
