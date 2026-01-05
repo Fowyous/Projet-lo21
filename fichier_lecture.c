@@ -1,4 +1,5 @@
 #include "fichier_lecture.h"
+#include "gestion_liste.h"
 
 BC *Sauvegarde(BC *base, const char *chemin){
 	FILE *file;
@@ -66,6 +67,7 @@ BC *lecture_fichier(const char *chemin){//lis les bases de connaissances dans le
 		else if (strncmp(ligne, "    PROPOS:", 11) == 0){
 			char *proposition = strdup(ligne + 12);// on enleve le 	PROPOS:
 			proposition[strlen(proposition) - 1] = '\0';//on enleve le \n
+			Ajout_fait(base->faits, proposition)
 			Ajout_proposition(nouvel_regle, proposition);
 		}
 	
