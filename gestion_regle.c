@@ -145,3 +145,13 @@ void afficher_regle(Regle *regle) {     ///a verif nouveau
         printf("\n");
     }
 }
+
+
+Propositions* proposition_suivante(Propositions* propo) {
+    if (propo != NULL) {
+        return propo->next;
+    }
+    else {
+        return NULL;
+    }
+}
