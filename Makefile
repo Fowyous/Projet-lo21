@@ -1,44 +1,45 @@
 # Compiler
 CC = gcc
 
-# Compiler flags
+# Flags
 CFLAGS = -Wall -g
+LDFLAGS = -lncurses -lssh -ltelnet
 
 # Directories
 SRC_DIR = .
 BIN_DIR = bin
 OBJ_DIR = obj
 
-# nom de l'executable
+# Target executable name
 TARGET = $(BIN_DIR)/main
 
 # Source files
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-
+SRCS = main.c fichier_lecture.c gestion_liste.c gestion_base.c gestion_regle.c
 # Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
+# Default target
 all: $(BIN_DIR) $(TARGET)
 
-# Creer dossier si il n'existe pas
+# Create binary directory if it doesn't exist
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-# rendre les .o en executable
+# Linking target
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-# Compiler les fichiers C
+# Compile source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Creer le dossier si il n'existe pas
+# Create object directory if it doesn't exist
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 # Clean target
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)/$(TARGET)
+	rm -rf $(OBJ_DIR) $(TARGET)
 
 # Phony targets
 .PHONY: all clean
