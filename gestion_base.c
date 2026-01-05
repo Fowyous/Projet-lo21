@@ -146,3 +146,14 @@ void liste_regles_base(BC *base) {
         printf("Aucune base choisie.\n");
     }
 }
+
+
+Regle* get_regle_numero(BC* base, int numero) {
+    Regle* regle = tete_Base(base);
+    int i = 1;
+    while (regle != NULL && i < numero) {
+        regle = Regle_suivant(regle);
+        i++;
+    }
+    return regle;
+}
