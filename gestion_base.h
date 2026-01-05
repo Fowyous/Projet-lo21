@@ -16,5 +16,6 @@ Regle* tete_Base(BC* base);          //Prend en parametre un pointeur vers une b
 void supr_Regle(BC *base);          //Prend en parametre un pointeur vers une base et supprime la regle en queu de la liste de regle de la base, et ne retourne rien.
 BC *supr_bc(BC *base);          //Prend en parametre un pointeur vers une base et suprime toute les regles de la base et la base elle meme, et retourne un pointeur vers la base suivante.
 int taille_base(BC *base);          //Prend en parametre un pointeur vers une base et calcule combien il y a de regle dans celle ci, et retourne l'entier "taille" de la base qui est sont nombre de regle.
+void liste_regles_base(BC *base);          //Prend en parametre un pointeur vers une base et affiche chaque regle dans le terminal, et ne retourne rien.
 
 #endif
