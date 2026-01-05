@@ -33,32 +33,34 @@ void Conclusion(Regle* regle, char* conclusion){
 		return;
 	}
 	regle->conclusion = conclusion;
-
 }
+
 
 bool est_vide(Propositions* premisse){
     Propositions* p = premisse;
-
-    if (p != NULL && p->proposition != NULL){
+    if (p != NULL && p->proposition != NULL) {
         return false;
     }
     return true;
 }
 
-Regle *Regle_suivant(Regle *regle){
-	if (regle != NULL){
+
+Regle *Regle_suivant(Regle *regle) {
+	if (regle != NULL) {
 		return regle->next;
 	}
-	else
+	else {
 		return NULL;
+	}
 }
+
+
 void Ajout_proposition(Regle* regle, char* proposition){
     Propositions* new_propo = (Propositions*)malloc(sizeof(Propositions));
     new_propo->proposition = proposition;
     new_propo->next = NULL;
     if (regle == NULL){
     	printf("regle est nulle\n");
-
     }
     if (est_vide(regle->premisse)) {
         regle->premisse = new_propo;
@@ -71,34 +73,33 @@ void Ajout_proposition(Regle* regle, char* proposition){
     }
 }
 
-char* conclusion_regle(Regle* regle){
-    if (regle == NULL){
-	printf("regle nulle\n");
-	return NULL;
+
+char* conclusion_regle(Regle* regle) {
+    if (regle == NULL) {
+		printf("regle nulle\n");
+		return NULL;
     }
-    if (regle->conclusion == NULL){
-	printf("conclusion nulle\n");
-	return NULL;
+    else if (regle->conclusion == NULL) {
+		printf("conclusion nulle\n");
+		return NULL;
     }
-    char* c = regle->conclusion;
-    if (c == NULL) {
-        return NULL; // ou afficher un message d'erreur
-    } else {
+    else {
+		char* c = regle->conclusion;
         return c;
     }
 }
 
-char* tete_premisse(Regle *regle){
-    
-//    Propositions* p = regle->premisse;
+
+char* tete_premisse(Regle *regle) {
     if (regle == NULL || est_vide(regle->premisse)) {
-        return NULL; // ou afficher un message d'erreur
+        return NULL;
     } else {
         return regle->premisse->proposition;
     }
 }
 
-bool est_dans_premisse(Propositions* premisse, char* ptest){
+
+bool est_dans_premisse(Propositions* premisse, char* ptest) {
     Propositions* p = premisse;
     if (est_vide(p)) {
         return false;
@@ -111,10 +112,23 @@ bool est_dans_premisse(Propositions* premisse, char* ptest){
     }
 }
 
-void supr_proposition(Regle *regle){	
+
+void supr_proposition(Regle *regle) {	
 	Propositions *propo = regle->premisse->next;
 	free(tete_premisse(regle));
 	free(regle->premisse);
 	regle->premisse = propo;
+}
 
+
+void afficher_regle(Regle *regle) {     ///a verif nouveau
+    if (regle != NULL) {
+        printf("Regle : %s =>", regle->conclusion);
+        Propositions* p = regle->premisse;
+        while (p != NULL) {
+            printf(" %s", p->proposition);
+            p = p->next;
+        }
+        printf("\n");
+    }
 }
