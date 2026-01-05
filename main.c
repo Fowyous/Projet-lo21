@@ -3,6 +3,86 @@
 #include "main.h"
 
 #define INPUT_MAX 100
+
+
+void moteur_inference(BC* base){
+    Liste_faits* l = base->faits;
+    Liste_faits* faits_connus = NULL;
+    Liste_faits* faits_certain = NULL;
+    char fait[100];
+    for (int i = 0; i < taille_faits(base->faits); i++){
+        printf("est ce que le fait '%s' est certain? (o: oui, n: non)\n", l->fait);
+        char reponse = getchar();
+        if (reponse == 'o'){
+            Ajout_fait(&faits_certain, l->fait);
+        }
+        l = l->next;
+    }
+    //voir si des regles peuvent etre appliquees
+    bool nouvelle_inference = true;
+    while (nouvelle_inference){
+        nouvelle_inference = false;
+        Regle* r = base->regle;
+        while (r != NULL){
+            bool toutes_premisses_connues = true;
+            Propositions* p = r->premisse;
+            while (p != NULL){
+                if (!est_dans_liste_faits(faits_certain, p->proposition)){
+                    toutes_premisses_connues = false;
+                    break;
+                }
+                p = p->next;
+            }
+            if (toutes_premisses_connues && !est_dans_liste_faits(faits_certain, r->conclusion)){
+                printf("La regle suivante peut etre appliquee : ");
+                afficher_regle(r);
+                printf("Conclusion : %s\n", r->conclusion);
+                Ajout_fait(&faits_connus, r->conclusion);
+                printf("Le fait '%s' a ete ajoute aux faits connus.\n", r->conclusion);
+                nouvelle_inference = true;
+            }
+            r = r->next;
+        }
+        //demander a l'utilisateur si les faits connus sont certains
+        Liste_faits* temp = faits_connus;
+        while (temp != NULL){
+            if (!est_dans_liste_faits(faits_certain, temp->fait)){
+                printf("est ce que le fait '%s' est certain? (o: oui, n: non)\n", temp->fait);
+                char reponse = getchar();
+                if (reponse == 'o'){
+                    Ajout_fait(&faits_certain, temp->fait);
+                }
+            }
+            temp = temp->next;
+        }
+    }
+    printf("Inference terminee. Faits connus :\n");
+    afficher_liste_faits(faits_certain);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 char lire_char(){
 
 
@@ -48,8 +128,6 @@ void menu_principal(){
 	default:
 		printf("mauvais choix."); //a completer il faut refaire la question aprés un input pas bon
 	}
-
-
 }
 int main(){
   menu_principal();
