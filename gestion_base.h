@@ -19,5 +19,6 @@ int taille_base(BC *base);          //Prend en parametre un pointeur vers une ba
 void liste_regles_base(BC *base);          //Prend en parametre un pointeur vers une base et affiche chaque regle dans le terminal, et ne retourne rien.
 Regle* get_regle_numero(BC* base, int numero);          //Prend en parametre un pointeur vers une base et un entier "numero", etrenvoie la regle correspondant au numero dans la base.
 BC* get_base_numero(BC* bases, int numero);          //Prend en parametre un pointeur vers la tete de la liste de bases et un etentier "numero", et renvoie la base correspondant au numero que l'on donne.
+void supprimer_regle(BC *base, int num_regle);
 
 #endif
