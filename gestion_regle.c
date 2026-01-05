@@ -111,7 +111,7 @@ bool est_dans_premisse(Propositions* premisse, char* ptest) {
 
 void supr_proposition(Regle *regle) {	
 	Propositions *propo = regle->premisse->next;
-	free(tete_premisse(regle));
+	free(regle->premisse);
 	free(regle->premisse);
 	regle->premisse = propo;
 }
@@ -119,7 +119,7 @@ void supr_proposition(Regle *regle) {
 
 void suprimer_proposition(Regle *regle, char *propo){
     if (regle != NULL){
-        Propositions* p = tete_premisse(regle);
+        Propositions* p = regle->premisse;
         Propositions* prev = NULL;
         while (p != NULL && strcmp(p->proposition, propo) != 0){
             prev = p;
