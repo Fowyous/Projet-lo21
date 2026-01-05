@@ -1,6 +1,4 @@
-#include "main.h"
-#include <string.h>
-#include <stdlib.h>
+#include "fichier_lecture.h"
 
 BC *Sauvegarde(BC *base, const char *chemin){
 	FILE *file;
