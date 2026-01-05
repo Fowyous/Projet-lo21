@@ -100,8 +100,8 @@ void principal() {
     int selection = 1;
     int action = 1;
     int taille = 0;
-    const char *chemin = "bases.txt";       /////chemin a modif
-    BC *bases = lecture_fichier(chemin);        /////chemin a modif
+    const char *chemin = "bases.txt";       /////chemin a modif si utilisation du autre fichier
+    BC *bases = lecture_fichier(chemin);
     BC *b = NULL;
     while (conttinuer == 1){
         ///choix de la base
