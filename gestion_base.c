@@ -92,3 +92,15 @@ BC *supr_bc(BC *base){
 	free(base);
 	return base2;
 }
+
+
+int taille_base(BC *base) {
+    int taille = 0;
+    Regle *regle = tete_Base(base);
+    while (regle != NULL) {
+        taille++;
+        regle = Regle_suivant(regle);
+    }
+    printf("La base %s contient %d regles.\n", nom_bc(base), taille);   ////////////peut etre a tege
+    return taille;
+}
