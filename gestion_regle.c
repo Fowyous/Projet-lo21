@@ -132,3 +132,16 @@ void afficher_regle(Regle *regle) {     ///a verif nouveau
         printf("\n");
     }
 }
+
+
+void afficher_regle(Regle *regle) {     ///a verif nouveau
+    if (regle != NULL) {
+        printf("Regle : %s =>", conclusion_regle(regle));
+        Propositions* p = tete_premisse(regle);
+        while (p != NULL) {
+            printf(" %s", p->proposition);
+            p = proposition_suivante(p);
+        }
+        printf("\n");
+    }
+}
