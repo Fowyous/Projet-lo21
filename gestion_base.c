@@ -80,6 +80,31 @@ void supr_Regle(BC *base){
 	free(regle);
 }
 
+
+void supprimer_regle(BC *base, int num_regle){     ////a verif nouveau       a mettre avec celle d avant
+    if (base != NULL){
+        Regle* regle = tete_Base(base);
+        Regle* prev = NULL;
+        int i = 1;
+        while (regle != NULL && i < num_regle){
+            prev = regle;
+            regle = Regle_suivant(regle);
+            i++;
+        }
+        if (regle != NULL){
+            if (prev == NULL){
+                base->regle = Regle_suivant(regle);
+            }
+            else {
+                prev->next = Regle_suivant(regle);
+            }
+            free(regle);
+        }
+    }
+}
+
+
+
 BC *supr_bc(BC *base){
 	if (base == NULL){
 		return NULL;
