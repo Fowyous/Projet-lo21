@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include "main.h"
 
 bool est_dans_liste_faits(Liste_faits* liste, char* fait_test);          //Prend en parametre un pointeur vers une liste de faits et une chaine de caractere "fait_test", et retourne vrai si le fait est dans la liste.
 void Ajout_fait(Liste_faits** liste, char* nouveau_fait);          //Prend en parametre un pointeur vers une liste de faits et une chaine de caractere "nouveau_fait", ajoute ce fait ou incremente son nombre d'apparition, et ne retourne rien.
