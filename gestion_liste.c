@@ -74,7 +74,7 @@ void supprimer_fait(Liste_faits** liste, char* fait_a_supprimer){
 
 
 bool est_vide(Liste_faits* liste){
-    return liste == NULL;
+    return (liste == NULL);
 }
 
 
