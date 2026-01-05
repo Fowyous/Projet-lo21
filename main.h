@@ -23,12 +23,21 @@ typedef struct Regle {
 	struct Regle* next;
 }Regle;
 
-///////////////////////////////////chaine de regles
+///////////////////////////////////structure de la liste de fait
+typedef struct liste_faits {
+    char* fait;
+    int nombre_apparition;
+    struct liste_faits* next;
+} Liste_faits;
+
+///////////////////////////////////structure de la base de connaissance
 typedef struct BC{
         char* nom;
         Regle* regle;
+        Liste_faits* faits;
         struct BC* next;
 }BC;
+
 
 //¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//
 //_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_//fonctions//¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\_/¯\\
