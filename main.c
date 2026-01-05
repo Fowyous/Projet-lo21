@@ -5,6 +5,32 @@
 #define INPUT_MAX 100
 
 
+BC* choisir_base(BC* base){          //Prend en parametre un pointeur vers la tete de la liste de bases, et retourne un pointeur vers la base choisie.
+    int choix_base = -1;
+    if (base != NULL){
+        printf("choisir parmi les bases avec un numero.\n");
+        BC* temp = base;
+        int i=1;
+        while (temp != NULL){
+            printf("%d : %s\n", i, nom_bc(temp));
+            temp = bc_suivant(temp);
+            i++;
+        }
+        scanf("%d", &choix_base);
+        if (choix_base > 0){
+            base = get_base_numero(base, choix_base);
+            printf("Base choisie : %s\n", nom_bc(base));
+            return base;
+        }
+    }
+    else {
+        printf("Base choisie : %s\n", nom_bc(base));
+    }
+    return base;
+}
+
+
+
 void moteur_inference(BC* base){
     Liste_faits* l = base->faits;
     Liste_faits* faits_connus = NULL;
