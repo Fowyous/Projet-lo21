@@ -151,19 +151,6 @@ void afficher_regle(Regle *regle) {
 }
 
 
-void afficher_regle(Regle *regle) {
-    if (regle != NULL) {
-        printf("Regle : %s =>", conclusion_regle(regle));
-        Propositions* p = regle->premisse;
-        while (p != NULL) {
-            printf(" %s", p->proposition);
-            p = proposition_suivante(p);
-        }
-        printf("\n");
-    }
-}
-
-
 Propositions* proposition_suivante(Propositions* propo) {
     if (propo != NULL) {
         return propo->next;
