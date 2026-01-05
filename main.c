@@ -149,7 +149,7 @@ void principal() {
                     ///ajout d'une regle
                     case 'a':
                         int ajout = 1;
-                        Regle* r = creer_regle();
+                        Regle* r = Creer_regle();
                         printf("Entrez la conclusion de la regle : ");
                         char conclusion[100];
                         scanf("%s", conclusion);
