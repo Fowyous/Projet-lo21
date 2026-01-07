@@ -38,7 +38,10 @@ void moteur_inference(BC* base){
     char fait[100];
     for (int i = 0; i < taille_faits(base->faits); i++){
         printf("est ce que le fait '%s' est certain? (o: oui, n: non)\n", l->fait);
-        char reponse = getchar();
+        char reponse = '\n';
+	fflush(stdin);
+	getchar();
+	while (getchar() != '\n'); 
         if (reponse == 'o'){
             Ajout_fait(&faits_certain, l->fait);
         }
@@ -235,7 +238,9 @@ void principal() {
                                 }
 
                                 printf("voulez vous poursuivre les modifications sur cette regle?(o: oui n: non)\n");
-                                choix = getchar();
+				choix = '\n';
+				while (choix == '\n')
+					choix = getchar();
                                 if (choix == 'o'){
                                     modif = 1;
                                 }
@@ -322,6 +327,7 @@ void principal() {
         }
     }
     while (bases != NULL){
+	    printf("here\n");
 	bases = supr_bc(bases);
     }
     return;

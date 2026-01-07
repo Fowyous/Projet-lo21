@@ -2,7 +2,7 @@ BC: Nombres
 REGL: 4
     PROPOS: 1
     PROPOS: 3
-REGL: 7
+REGL: lrboarbckeo
     PROPOS: 2
     PROPOS: 5
     PROPOS: 3
@@ -31,19 +31,3 @@ REGL: J
 REGL: L
     PROPOS: J
     PROPOS: K
-BC: f
-REGL: reg1
-    PROPOS: reg2
-    PROPOS: reg3
-REGL: n
-    PROPOS: nn
-    PROPOS: nnn
-    PROPOS: nnnn
-REGL: b
-    PROPOS: bb
-    PROPOS: bb
-    PROPOS: bbb
-REGL: c
-    PROPOS: cc
-    PROPOS: ccc
-    PROPOS: cccc

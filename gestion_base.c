@@ -12,21 +12,21 @@
 
 BC* Creer_BC(BC* bases){//Crée une base et l'ajoute en queue et retourne la nouvelle base.
 	BC *new_BC;
-    if (bases == NULL){
-        new_BC = (BC*)malloc(sizeof(BC));
-	new_BC->regle = NULL;
-	new_BC->next = NULL;
-    }
-    else if (bases->next == NULL){
-        new_BC = (BC*)malloc(sizeof(BC));
-        new_BC->regle = NULL;
-        new_BC->next = NULL;
-	bases->next = new_BC;
-    }
-    else {
-        new_BC = Creer_BC(bases->next);
-    }
-    return new_BC;
+	if (bases == NULL){
+		new_BC = (BC*)malloc(sizeof(BC));
+		new_BC->regle = NULL;
+		new_BC->next = NULL;
+	}
+	else if (bases->next == NULL){
+		new_BC = (BC*)malloc(sizeof(BC));
+		new_BC->regle = NULL;
+		new_BC->next = NULL;
+		bases->next = new_BC;
+	}
+	else {
+		new_BC = Creer_BC(bases->next);
+	}
+	return new_BC;
 }
 
 
@@ -46,27 +46,27 @@ char *nom_bc(BC *base){
 
 }
 void Ajout_regle(BC* base, Regle* regle) {
-    Regle* derniere_regle = base->regle;
-    
-    if (base == NULL){
-	printf("base nulle. \n");
-	exit(EXIT_FAILURE);
-    }
-    if (derniere_regle == NULL) {
-        // Regle est vide alors on ajoute la nouvelle regle
-        base->regle = regle;
-        regle->next = NULL;  
-        return;
-    }
+	Regle* derniere_regle = base->regle;
 
-    // Traverse to the end of the list
-    while (derniere_regle->next != NULL) {
-        derniere_regle = derniere_regle->next;
-    }
+	if (base == NULL){
+		printf("base nulle. \n");
+		exit(EXIT_FAILURE);
+	}
+	if (derniere_regle == NULL) {
+		// Regle est vide alors on ajoute la nouvelle regle
+		base->regle = regle;
+		regle->next = NULL;  
+		return;
+	}
 
-    // Lier la nouvelle regle a la fin
-    derniere_regle->next = regle;
-    regle->next = NULL;  // Initializer next a NULL
+	// Traverse to the end of the list
+	while (derniere_regle->next != NULL) {
+		derniere_regle = derniere_regle->next;
+	}
+
+	// Lier la nouvelle regle a la fin
+	derniere_regle->next = regle;
+	regle->next = NULL;  // Initializer next a NULL
 }
 
 
@@ -74,10 +74,10 @@ void Ajout_nom_BC(BC* base, char* nom){
 	base->nom = nom;
 }
 Regle* tete_Base(BC* base){
-    if (base == NULL || base->regle == NULL){
-	return NULL;
-    }
-    return base->regle;
+	if (base == NULL || base->regle == NULL){
+		return NULL;
+	}
+	return base->regle;
 }
 
 void supr_Regle(BC *base){
@@ -124,6 +124,7 @@ void supprimer_regle(BC *base, int num_regle){     ////a verif nouveau       a m
 
 
 BC *supr_bc(BC *base){
+	printf("supr bc : %s\n", base->nom);
 	if (base == NULL){
 		return NULL;
 	}
