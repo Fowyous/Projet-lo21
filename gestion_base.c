@@ -85,8 +85,9 @@ void supr_Regle(BC *base){
 		return;
 	}
 	Regle *regle = tete_Base(base);
+	printf("regle : %s\n", regle->conclusion);
 	while (tete_premisse(regle)){// si la regle n'a plus de premisse on continue
-		supr_proposition(tete_Base(base));
+		supr_proposition(regle);
 	}
 	base->regle = regle->next;
 	free(conclusion_regle(regle));
@@ -111,6 +112,10 @@ void supprimer_regle(BC *base, int num_regle){     ////a verif nouveau       a m
             else {
                 prev->next = Regle_suivant(regle);
             }
+	    while (tete_premisse(regle)){// si la regle n'a plus de premisse on continue
+	    supr_proposition(regle);
+	    }
+	    free(conclusion_regle(regle));
             free(regle);
         }
     }

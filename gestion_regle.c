@@ -136,6 +136,7 @@ void suprimer_proposition(Regle *regle, char *propo){
             else {
                 prev->next = p->next;
             }
+	    free(p->proposition);
             free(p);
         }
     }

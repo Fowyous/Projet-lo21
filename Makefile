@@ -3,7 +3,8 @@ CC = gcc
 
 # Flags
 CFLAGS = -Wall -g
-LDFLAGS = -lncurses -lssh -ltelnet
+#LDFLAGS = -lncurses -lssh -ltelnet
+LDFLAGS = 
 
 # Directories
 SRC_DIR = .
