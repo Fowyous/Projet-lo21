@@ -134,7 +134,7 @@ void principal() {
         ///choix de l'action a effectuer sur la base
         while (action == 1){
             printf("Voulez vous effectuer une action sur cette base? (o: oui, n: non ferme programme, c: changer de base)\n");
-            choix = getchar();
+	    scanf(" %c", &choix);
             if (choix == 'o'){
                 printf("choisissez une action a effectuer sur cette base\n");
                 printf("a: ajouter une regele\n");      ///a verif
@@ -144,7 +144,7 @@ void principal() {
                 printf("e: supprimer la base\n");       ///a verif
                 printf("f: sauvegarder les bases\n");   ///a verif
                 printf("g: moteur inference\n");        ///a verif
-                choix = getchar();
+	    	scanf(" %c", &choix);
                 switch (choix){
                     ///ajout d'une regle
                     case 'a':
@@ -154,10 +154,13 @@ void principal() {
                         char conclusion[100];
                         scanf("%s", conclusion);
                         r->conclusion = conclusion;
-                        while (ajout == 1)
+			getchar();
+                        while (ajout == 1){
                             printf("Entrez la proposition de la regle ou f quand vous avez fini: ");
                             char propo[100];
-                            scanf("%s", propo);
+			    fflush(stdin);
+			    fgets(propo, sizeof(propo), stdin);
+			    propo[strlen(propo) - 1] = '\0';
                             if (strcmp(propo, "f") == 0){
                                 printf("Regle cree :\n");
                                 afficher_regle(r);
@@ -166,9 +169,11 @@ void principal() {
                                 break;
                             }
                             else {
-                                Ajout_proposition(r, propo);
+				char *temp;
+				strcpy(temp, propo);
+                                Ajout_proposition(r, temp);
                             }
-
+			}
                         
                         break;
 

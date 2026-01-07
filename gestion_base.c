@@ -45,18 +45,26 @@ char *nom_bc(BC *base){
 	}
 
 }
-void Ajout_regle(BC* base, Regle* regle){
-	Regle* derniere_regle = base->regle;
-	if (derniere_regle == NULL){
-		base->regle = regle;
-		return ;
-	}
-	while (derniere_regle->next != NULL){
-		derniere_regle = derniere_regle->next;
-	}
-	base->regle->next = regle;
-	return;
+void Ajout_regle(BC* base, Regle* regle) {
+    Regle* derniere_regle = base->regle;
+    
+    if (derniere_regle == NULL) {
+        // Base rule list is empty, add the new rule
+        base->regle = regle;
+        regle->next = NULL;  // Initialize next to NULL
+        return;
+    }
+
+    // Traverse to the end of the list
+    while (derniere_regle->next != NULL) {
+        derniere_regle = derniere_regle->next;
+    }
+
+    // Link the new rule at the end
+    derniere_regle->next = regle;
+    regle->next = NULL;  // Initialize next to NULL
 }
+
 
 void Ajout_nom_BC(BC* base, char* nom){
 	base->nom = nom;
