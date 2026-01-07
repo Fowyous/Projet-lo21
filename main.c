@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <termios.h>
 #include "main.h"
-#include "gestion_base.h"
-#include "gestion_liste.h"
-#include "gestion_regle.h"
 
 #define INPUT_MAX 100
 
@@ -137,9 +134,9 @@ void principal() {
 	    scanf(" %c", &choix);
             if (choix == 'o'){
                 printf("choisissez une action a effectuer sur cette base\n");
-                printf("a: ajouter une regele\n");      ///a verif
+                printf("a: ajouter une regele\n"); 
                 printf("b: modifier une regle\n");      ///a verif
-                printf("c: supprimer une regle\n");     ///a verif
+                printf("c: supprimer une regle\n");
                 printf("d: afficher les regles\n");     ///a verif
                 printf("e: supprimer la base\n");       ///a verif
                 printf("f: sauvegarder les bases\n");   ///a verif
@@ -195,7 +192,7 @@ void principal() {
                                 printf("quel modification voulez-vous effectuer?\n");
                                 r = get_regle_numero(b, num_regle);
                                 printf("modifier la premisse (p), modifier la conclusion (c)\n");
-                                choix = getchar();
+	    			scanf(" %c", &choix);
                                 ///modification de la premisse
                                 if (choix == 'p'){
                                     printf("a: ajout, s: suppression\n");
@@ -230,7 +227,6 @@ void principal() {
                                     }
                                     else {
                                         r->conclusion = strdup(new_conclusion);
-                                        free(new_conclusion);
                                     }
                                     printf("Conclusion modifiee.\n");
                                 }
@@ -313,8 +309,10 @@ void principal() {
             }
 
         ///sauvegarde des bases avant de quitter
-        printf("voulez vous souvgarder?(o: oui, n: non)\n");
-        choix = getchar();
+        printf("voulez vous sauvegarder?(o: oui, n: non)\n");
+	choix = '\n';
+	while (choix == '\n')
+	        choix = getchar();
         if (choix == 'o'){
             Sauvegarde(bases, chemin);
             printf("Bases sauvegardees.\n");
@@ -322,6 +320,9 @@ void principal() {
         else if (choix == 'n'){
             printf("Bases non sauvegardees.\n");
         }
+    }
+    while (bases != NULL){
+	bases = supr_bc(bases);
     }
     return;
     }

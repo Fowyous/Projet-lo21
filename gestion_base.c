@@ -48,10 +48,14 @@ char *nom_bc(BC *base){
 void Ajout_regle(BC* base, Regle* regle) {
     Regle* derniere_regle = base->regle;
     
+    if (base == NULL){
+	printf("base nulle. \n");
+	exit(EXIT_FAILURE);
+    }
     if (derniere_regle == NULL) {
-        // Base rule list is empty, add the new rule
+        // Regle est vide alors on ajoute la nouvelle regle
         base->regle = regle;
-        regle->next = NULL;  // Initialize next to NULL
+        regle->next = NULL;  
         return;
     }
 
@@ -60,9 +64,9 @@ void Ajout_regle(BC* base, Regle* regle) {
         derniere_regle = derniere_regle->next;
     }
 
-    // Link the new rule at the end
+    // Lier la nouvelle regle a la fin
     derniere_regle->next = regle;
-    regle->next = NULL;  // Initialize next to NULL
+    regle->next = NULL;  // Initializer next a NULL
 }
 
 
@@ -80,10 +84,10 @@ void supr_Regle(BC *base){
 	if (base == NULL || base->regle == NULL){
 		return;
 	}
-	while (tete_premisse(tete_Base(base))){// si la regle n'a plus de premisse on continue
+	Regle *regle = tete_Base(base);
+	while (tete_premisse(regle)){// si la regle n'a plus de premisse on continue
 		supr_proposition(tete_Base(base));
 	}
-	Regle *regle = tete_Base(base);
 	base->regle = regle->next;
 	free(conclusion_regle(regle));
 	free(regle);

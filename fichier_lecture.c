@@ -1,30 +1,33 @@
 #include "fichier_lecture.h"
 #include "gestion_liste.h"
 
-BC *Sauvegarde(BC *base, const char *chemin){
+void Sauvegarde(BC *base, const char *chemin){
 	FILE *file;
 	file = fopen(chemin, "w");
 	if (file == NULL){
 		printf("Ouverture du fichier impossible!!\n");
 		exit(EXIT_FAILURE);
 	}
-	while (base){
-		fprintf(file, "BC: %s\n", nom_bc(base));
-		Regle *regle;
+	BC *ce_bc = base;
+	while (ce_bc){
+		fprintf(file, "BC: %s\n", nom_bc(ce_bc));
+		Regle *regle = tete_Base(ce_bc);
 		do {
-			regle = tete_Base(base);
+		
 			if (conclusion_regle(regle) != NULL){
 				fprintf(file, "REGL: %s\n", conclusion_regle(regle));
 			}
 			else 
 				break;
-			while (tete_premisse(regle) != NULL){
-				fprintf(file, "    PROPOS: %s\n", tete_premisse(regle));
-				supr_proposition(regle);
+			Propositions * propo = regle->premisse;
+
+			while (propo != NULL){
+				fprintf(file, "    PROPOS: %s\n", propo->proposition);
+				propo = proposition_suivante(propo);
 			}
-			supr_Regle(base);
+			regle = Regle_suivant(regle);
 		}while (regle);
-		base = supr_bc(base);
+		ce_bc = bc_suivant(ce_bc);
 	}
 	fclose(file);
 

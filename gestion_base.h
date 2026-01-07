@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
+#include "gestion_regle.h"
 
 BC *Creer_BC(BC* bases);          //Crée une base de connaissance et l'ajoute en queue et retourne la nouvelle base.
 BC *bc_suivant(BC *base);          //Prend en parametre un pointeur vers une base, et retourne la base qui la suis.

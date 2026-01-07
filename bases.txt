@@ -16,6 +16,14 @@ REGL: 9
 REGL: 8
     PROPOS: 6
     PROPOS: 2
+REGL: num
+    PROPOS: num1
+    PROPOS: num2
+    PROPOS: num3
+REGL: nn
+    PROPOS: nn1
+    PROPOS: nn2
+    PROPOS: nn3
 BC: Alphabet
 REGL: C
     PROPOS: A
