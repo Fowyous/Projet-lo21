@@ -169,7 +169,11 @@ void principal() {
                                 break;
                             }
                             else {
-				char *temp;
+				char *temp = malloc(strlen(propo) + 1);
+				if (temp == NULL){
+					printf("erreure d'allocation de memoire.\n");
+					exit(EXIT_FAILURE);
+				}
 				strcpy(temp, propo);
                                 Ajout_proposition(r, temp);
                             }
