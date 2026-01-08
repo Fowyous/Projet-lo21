@@ -132,7 +132,7 @@ void principal() {
 
         ///choix de l'action a effectuer sur la base
         while (action == 1){
-            printf("Voulez vous effectuer une action sur cette base? (o: oui, n: non ferme programme, c: changer de base)\n");
+            printf("Voulez vous effectuer une action sur cette base? (o: oui, n: non ferme programme) \n");
 	    scanf(" %c", &choix);
             if (choix == 'o'){
                 printf("choisissez une action a effectuer sur cette base\n");
@@ -198,6 +198,7 @@ void principal() {
                                 ///modification de la premisse
                                 if (choix == 'p'){
                                     printf("a: ajout, s: suppression\n");
+				    while (getchar() != '\n');
                                     choix = getchar();
                                     if (choix == 'a'){
                                         printf("nouvelle premisse a ajouter\n");

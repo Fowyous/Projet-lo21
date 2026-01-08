@@ -2,10 +2,6 @@ BC: Nombres
 REGL: 4
     PROPOS: 1
     PROPOS: 3
-REGL: lrboarbckeo
-    PROPOS: 2
-    PROPOS: 5
-    PROPOS: 3
 REGL: 6
     PROPOS: 1
     PROPOS: 2
@@ -16,6 +12,7 @@ REGL: 9
 REGL: 8
     PROPOS: 6
     PROPOS: 2
+    PROPOS: 10
 BC: Alphabet
 REGL: C
     PROPOS: A
