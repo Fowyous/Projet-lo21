@@ -14,11 +14,13 @@ BC* Creer_BC(BC* bases){//Crée une base et l'ajoute en queue et retourne la nou
 	BC *new_BC;
 	if (bases == NULL){
 		new_BC = (BC*)malloc(sizeof(BC));
+		new_BC->faits = NULL;
 		new_BC->regle = NULL;
 		new_BC->next = NULL;
 	}
 	else if (bases->next == NULL){
 		new_BC = (BC*)malloc(sizeof(BC));
+		new_BC->faits = NULL;
 		new_BC->regle = NULL;
 		new_BC->next = NULL;
 		bases->next = new_BC;

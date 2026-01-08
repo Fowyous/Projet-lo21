@@ -40,8 +40,8 @@ void moteur_inference(BC* base){
         printf("est ce que le fait '%s' est certain? (o: oui, n: non)\n", l->fait);
         char reponse = '\n';
 	fflush(stdin);
-	getchar();
-	while (getchar() != '\n'); 
+	while (getchar() != '\n');
+	reponse = getchar();
         if (reponse == 'o'){
             Ajout_fait(&faits_certain, l->fait);
         }
@@ -76,11 +76,10 @@ void moteur_inference(BC* base){
         Liste_faits* temp = faits_connus;
         while (temp != NULL){
             if (!est_dans_liste_faits(faits_certain, temp->fait)){
-                printf("est ce que le fait '%s' est certain? (o: oui, n: non)\n", temp->fait);
+                printf("Le fait '%s' est certain\n", temp->fait);
+		while (getchar() != '\n');
                 char reponse = getchar();
-                if (reponse == 'o'){
                     Ajout_fait(&faits_certain, temp->fait);
-                }
             }
             temp = temp->next;
         }
